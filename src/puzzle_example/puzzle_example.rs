@@ -7,18 +7,17 @@ impl PuzzleExample {
     }
 
     pub fn solve_for(&self, input: &str) -> i32 {
-        let mut number_of_open_brackets = 0;
-        let mut number_of_closed_brackets = 0;
+        let mut floor = 0;
 
         for (idx, ch) in input.chars().enumerate() {
             match ch {
-                '(' => number_of_open_brackets = number_of_open_brackets + 1,
-                ')' => number_of_closed_brackets = number_of_closed_brackets + 1,
+                '(' => floor = floor + 1,
+                ')' => floor = floor - 1,
                 _ => panic!("invalid character {} at position {}", ch, idx)
             }
         }
 
-        number_of_open_brackets - number_of_closed_brackets
+        floor
     }
 }
 

@@ -9,7 +9,6 @@ mod puzzle_example;
 use puzzle_example::puzzle_example::PuzzleExample;
 
 
-
 fn main() {
     let puzzle = PuzzleExample::new();
     let floor = puzzle.solve_for(read_file("src/puzzle_example/input.txt").as_str());

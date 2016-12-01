@@ -8,13 +8,30 @@ use std::fs::File;
 mod puzzle_example;
 use puzzle_example::puzzle_example::PuzzleExample;
 
+mod puzzle_day_1;
+
+use puzzle_day_1::puzzle_day_1::PuzzleDay1;
+
 
 fn main() {
-    let puzzle = PuzzleExample::new();
-    let floor = puzzle.solve_for(read_file("src/puzzle_example/input.txt").as_str());
-
-    println!("floor={}", floor);
+    puzzle_example();
+    puzzle_day_1();
 }
+
+
+fn puzzle_example() {
+    let floor = PuzzleExample::new().solve_for(read_file("src/puzzle_example/input.txt").as_str());
+
+    println!("puzzle_example: floor={}", floor);
+}
+
+fn puzzle_day_1() {
+    let position = PuzzleDay1::new().solve_for(read_file("src/puzzle_day_1/input.txt").as_str());
+
+    println!("puzzle_day_1: distance to origin={}", position.point().distance_from_origin());
+    println!("puzzle_day_1: distance to origin of first already visited point={}", position.first_already_visited_point().unwrap().distance_from_origin());
+}
+
 
 fn read_file(filename: &str) -> String {
     let mut input_file: File= File::open(filename).unwrap();

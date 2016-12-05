@@ -10,8 +10,6 @@ impl PuzzleDay1 {
     }
 
     pub fn solve_for(&self, input: &str) -> Position {
-        // L5, L188, L4, R1
-
         let mut position = Position::new();
         let mut steps = 0;
 

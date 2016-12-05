@@ -48,8 +48,6 @@ impl Position {
             Direction::South => self.direction = Direction::West,
             Direction::West => self.direction = Direction::North,
         };
-
-        //        println!("turned right to {:?}", self.direction);
     }
 
     pub fn turn_left(&mut self) {
@@ -59,17 +57,13 @@ impl Position {
             Direction::South => self.direction = Direction::East,
             Direction::East => self.direction = Direction::North,
         };
-
-        //        println!("turned left to {:?}", self.direction);
     }
 
+    #[allow(unused_variables)]
     pub fn advance(&mut self, steps: i32) {
         for i in 0..steps {
             self.advance_single_step();
         }
-
-        //        println!("advanced {} steps in direction {:?}", steps, self.direction);
-        //        println!("#(visited points)={}", self.visited_points.len());
     }
 
     fn advance_single_step(&mut self) {

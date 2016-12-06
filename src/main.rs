@@ -2,6 +2,10 @@
 #[macro_use]
 extern crate hamcrest;
 
+extern crate regex;
+extern crate itertools;
+
+
 use std::io::prelude::*;
 use std::fs::File;
 
@@ -12,14 +16,18 @@ mod puzzle_day_1;
 use puzzle_day_1::puzzle_day_1::PuzzleDay1;
 
 mod puzzle_day_2;
-
 use puzzle_day_2::puzzle_day_2::PuzzleDay2;
+
+mod puzzle_day_3;
+
+use puzzle_day_3::puzzle_day_3::PuzzleDay3;
 
 
 fn main() {
     puzzle_example();
     puzzle_day_1();
     puzzle_day_2();
+    puzzle_day_3();
 }
 
 
@@ -42,6 +50,15 @@ fn puzzle_day_2() {
     println!("puzzle_day_2: regular code={}", regular_code);
     println!("puzzle_day_2: silly code={}", silly_code);
 }
+
+fn puzzle_day_3() {
+    let valid_triangles = PuzzleDay3::new().solve_for(read_file("src/puzzle_day_3/input.txt").as_str());
+    let valid_vertical_triangles = PuzzleDay3::new().solve_vertically_for(read_file("src/puzzle_day_3/input.txt").as_str());
+
+    println!("puzzle_day_3: #(valid triangles)={}", valid_triangles);
+    println!("puzzle_day_3: #(valid vertical triangles)={}", valid_vertical_triangles);
+}
+
 
 fn read_file(filename: &str) -> String {
     let mut input_file: File= File::open(filename).unwrap();

@@ -4,6 +4,8 @@ version = "0.1.0"
 authors = ["Sargon <sargon@me.com>"]
 
 [dependencies]
+regex = "*"
+itertools = "*"
 
 [dev-dependencies]
 hamcrest = "*"

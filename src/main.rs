@@ -1,9 +1,8 @@
 #[cfg(test)]
-#[macro_use]
-extern crate hamcrest;
+#[macro_use] extern crate hamcrest;
 
 extern crate regex;
-extern crate itertools;
+#[macro_use] extern crate itertools;
 
 
 use std::io::prelude::*;

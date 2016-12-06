@@ -24,18 +24,7 @@ impl PuzzleDay3 {
         let numbers_regex: Regex = Regex::new(r"(\d+)[ ]+(\d+)[ ]+(\d+)").unwrap();
 
         input.split('\n')
-            .batching(|mut it| {
-                match it.next() {
-                    None => None,
-                    Some(line1) => match it.next() {
-                        None => None,
-                        Some(line2) => match it.next() {
-                            None => None,
-                            Some(line3) => Some((line1, line2, line3))
-                        }
-                    }
-                }
-            })
+            .tuples::<(_, _, _)>()
             .map(|(line1, line2, line3)| (three_numbers(line1, &numbers_regex), three_numbers(line2, &numbers_regex), three_numbers(line3, &numbers_regex)))
             .flat_map(|((a, b, c), (d, e, f), (g, h, i))| vec!(Triangle::new(a, d, g), Triangle::new(b, e, h), Triangle::new(c, f, i)))
             .filter(|triangle| triangle.is_valid())
@@ -68,7 +57,7 @@ mod tests {
     fn test() {
         let puzzle = PuzzleDay3::new();
 
-        assert_that(puzzle.solve_for(" 5  10   25"), is(equal_to(0)));
+        assert_that!(puzzle.solve_for(" 5  10   25"), is(equal_to(0)));
     }
 
     #[test]

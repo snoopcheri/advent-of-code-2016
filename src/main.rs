@@ -18,8 +18,11 @@ mod puzzle_day_2;
 use puzzle_day_2::puzzle_day_2::PuzzleDay2;
 
 mod puzzle_day_3;
-
 use puzzle_day_3::puzzle_day_3::PuzzleDay3;
+
+mod puzzle_day_4;
+
+use puzzle_day_4::puzzle_day_4::PuzzleDay4;
 
 
 fn main() {
@@ -27,6 +30,7 @@ fn main() {
     puzzle_day_1();
     puzzle_day_2();
     puzzle_day_3();
+    puzzle_day_4();
 }
 
 
@@ -58,6 +62,11 @@ fn puzzle_day_3() {
     println!("puzzle_day_3: #(valid vertical triangles)={}", valid_vertical_triangles);
 }
 
+fn puzzle_day_4() {
+    let answer = PuzzleDay4::new().solve_for(read_file("src/puzzle_day_4/input.txt").as_str());
+
+    println!("puzzle_day_4: answer={}", answer);
+}
 
 fn read_file(filename: &str) -> String {
     let mut input_file: File= File::open(filename).unwrap();

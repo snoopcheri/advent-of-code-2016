@@ -9,20 +9,24 @@ use std::io::prelude::*;
 use std::fs::File;
 
 mod puzzle_example;
-use puzzle_example::puzzle_example::PuzzleExample;
+
+use puzzle_example::*;
 
 mod puzzle_day_1;
-use puzzle_day_1::puzzle_day_1::PuzzleDay1;
+
+use puzzle_day_1::*;
 
 mod puzzle_day_2;
-use puzzle_day_2::puzzle_day_2::PuzzleDay2;
+
+use puzzle_day_2::*;
 
 mod puzzle_day_3;
-use puzzle_day_3::puzzle_day_3::PuzzleDay3;
+
+use puzzle_day_3::*;
 
 mod puzzle_day_4;
 
-use puzzle_day_4::puzzle_day_4::PuzzleDay4;
+use puzzle_day_4::*;
 
 
 fn main() {

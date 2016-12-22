@@ -1,5 +1,4 @@
-use super::position::Position;
-
+use super::position::*;
 
 pub struct PuzzleDay1 {}
 
@@ -47,7 +46,7 @@ impl PuzzleDay1 {
 
 #[cfg(test)]
 mod tests {
-    use super::super::super::hamcrest::prelude::*;
+    use hamcrest::prelude::*;
     use super::*;
 
     #[test]

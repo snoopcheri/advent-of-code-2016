@@ -1,6 +1,6 @@
-use super::super::regex::Regex;
-use super::super::itertools::Itertools;
-use super::super::puzzle_day_3::triangle::Triangle;
+use regex::Regex;
+use itertools::Itertools;
+use super::triangle::*;
 
 
 pub struct PuzzleDay3 {}
@@ -50,7 +50,7 @@ fn three_numbers(line: &str, numbers_regex: &Regex) -> (u32, u32, u32) {
 
 #[cfg(test)]
 mod tests {
-    use super::super::super::hamcrest::prelude::*;
+    use hamcrest::prelude::*;
     use super::*;
 
     #[test]

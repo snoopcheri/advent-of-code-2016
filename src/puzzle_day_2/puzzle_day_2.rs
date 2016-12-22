@@ -1,6 +1,6 @@
-use super::num_pad::NumPad;
-use super::regular_num_pad::RegularNumPad;
-use super::silly_num_pad::SillyNumPad;
+use super::num_pad::*;
+use super::regular_num_pad::*;
+use super::silly_num_pad::*;
 
 
 pub struct PuzzleDay2 {}
@@ -45,7 +45,7 @@ fn replay_input_on_num_pad(input: &str, num_pad: &mut NumPad) -> String {
 
 #[cfg(test)]
 mod tests {
-    use super::super::super::hamcrest::prelude::*;
+    use hamcrest::prelude::*;
     use super::*;
 
     #[test]

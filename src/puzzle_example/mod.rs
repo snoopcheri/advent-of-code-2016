@@ -1,1 +1,3 @@
-pub mod puzzle_example;
+pub use self::puzzle_example::PuzzleExample;
+
+mod puzzle_example;

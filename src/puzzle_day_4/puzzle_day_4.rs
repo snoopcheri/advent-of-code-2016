@@ -1,6 +1,5 @@
-use super::super::regex::Regex;
-use super::super::puzzle_day_4::room::Room;
-
+use regex::Regex;
+use super::room::*;
 
 pub struct PuzzleDay4 {}
 
@@ -34,7 +33,7 @@ fn to_room(line: &str, room_regex: &Regex) -> Room {
 
 #[cfg(test)]
 mod tests {
-    use super::super::super::hamcrest::prelude::*;
+    use hamcrest::prelude::*;
     use super::*;
 
     #[test]

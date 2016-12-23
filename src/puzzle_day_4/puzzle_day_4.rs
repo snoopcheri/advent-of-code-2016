@@ -11,7 +11,7 @@ impl PuzzleDay4 {
     pub fn solve_for(&self, input: &str) -> u64 {
         let room_regex: Regex = Regex::new(r"([a-z-]+)-(\d+)\[([a-z]+)\]").unwrap();
 
-        input.split('\n')
+        input.lines()
             .map(|line| to_room(line, &room_regex))
             .filter(|room| room.is_checksum_valid())
             .map(|room| room.sector_id())

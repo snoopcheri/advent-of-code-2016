@@ -12,11 +12,8 @@ impl PuzzleDay2 {
     }
 
     pub fn solve_for(&self, input: &str) -> (String, String) {
-        let mut regular_num_pad = RegularNumPad::new();
-        let mut silly_num_pad = SillyNumPad::new();
-
-        let regular_code = replay_input_on_num_pad(input, &mut regular_num_pad);
-        let silly_code = replay_input_on_num_pad(input, &mut silly_num_pad);
+        let regular_code = replay_input_on_num_pad(input, &mut RegularNumPad::new());
+        let silly_code = replay_input_on_num_pad(input, &mut SillyNumPad::new());
 
         (regular_code, silly_code)
     }

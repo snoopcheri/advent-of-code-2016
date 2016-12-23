@@ -1,6 +1,6 @@
-use regex::Regex;
 use itertools::Itertools;
 use super::triangle::*;
+use super::parser::sides_of_triangle;
 
 
 pub struct PuzzleDay3 {}
@@ -11,40 +11,21 @@ impl PuzzleDay3 {
     }
 
     pub fn solve_for(&self, input: &str) -> usize {
-        let numbers_regex: Regex = Regex::new(r"(\d+)[ ]+(\d+)[ ]+(\d+)").unwrap();
-
-        input.split('\n')
-            .map(|line| three_numbers(line, &numbers_regex))
+        input.lines()
+            .map(|line| sides_of_triangle(line))
             .map(|(a, b, c)| Triangle::new(a, b, c))
             .filter(|triangle| triangle.is_valid())
             .count()
     }
 
     pub fn solve_vertically_for(&self, input: &str) -> usize {
-        let numbers_regex: Regex = Regex::new(r"(\d+)[ ]+(\d+)[ ]+(\d+)").unwrap();
-
-        input.split('\n')
+        input.lines()
             .tuples::<(_, _, _)>()
-            .map(|(line1, line2, line3)| (three_numbers(line1, &numbers_regex), three_numbers(line2, &numbers_regex), three_numbers(line3, &numbers_regex)))
+            .map(|(line1, line2, line3)| (sides_of_triangle(line1), sides_of_triangle(line2), sides_of_triangle(line3)))
             .flat_map(|((a, b, c), (d, e, f), (g, h, i))| vec!(Triangle::new(a, d, g), Triangle::new(b, e, h), Triangle::new(c, f, i)))
             .filter(|triangle| triangle.is_valid())
             .count()
     }
-}
-
-
-fn three_numbers(line: &str, numbers_regex: &Regex) -> (u32, u32, u32) {
-    let mut a = 0;
-    let mut b = 0;
-    let mut c = 0;
-
-    for caps in numbers_regex.captures_iter(line) {
-        a = caps.at(1).unwrap().parse::<u32>().unwrap();
-        b = caps.at(2).unwrap().parse::<u32>().unwrap();
-        c = caps.at(3).unwrap().parse::<u32>().unwrap();
-    }
-
-        (a, b, c)
 }
 
 

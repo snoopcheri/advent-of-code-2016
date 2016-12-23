@@ -10,7 +10,7 @@ pub enum Direction {
 }
 
 
-#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+#[derive(Debug, Copy, Clone, PartialEq, Eq, Hash)]
 pub struct Point {
     x: i32,
     y: i32,
@@ -59,26 +59,25 @@ impl Position {
         };
     }
 
-    #[allow(unused_variables)]
-    pub fn advance(&mut self, steps: i32) {
-        for i in 0..steps {
+    pub fn advance(&mut self, steps: u32) {
+        for _i in 0..steps {
             self.advance_single_step();
         }
     }
 
     fn advance_single_step(&mut self) {
         match self.direction {
-            Direction::North => self.point.y = self.point.y + 1,
-            Direction::East => self.point.x = self.point.x + 1,
-            Direction::South => self.point.y = self.point.y - 1,
-            Direction::West => self.point.x = self.point.x - 1,
+            Direction::North => self.point.y += 1,
+            Direction::East => self.point.x += 1,
+            Direction::South => self.point.y -= 1,
+            Direction::West => self.point.x -= 1,
         };
 
-        self.visited_points.push(self.point.clone());
+        self.visited_points.push(self.point);
     }
 
     pub fn point(&self) -> Point {
-        self.point.clone()
+        self.point
     }
 
     pub fn first_already_visited_point(&self) -> Option<Point> {
@@ -86,9 +85,9 @@ impl Position {
 
         for point in self.visited_points.iter() {
             if points.contains(&point) {
-                return Some(point.clone());
+                return Some(*point);
             }
-            points.insert(point.clone());
+            points.insert(*point);
         }
 
         None

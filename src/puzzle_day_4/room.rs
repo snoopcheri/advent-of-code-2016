@@ -23,12 +23,12 @@ impl Room {
             *occurrence.entry(ch).or_insert(0) += 1;
         }
 
-        let mut char_by_occurrence: Vec<(&char, &u32)> = occurrence.iter().collect();
-        char_by_occurrence.sort_by(|a, b| if a.1 != b.1 { b.1.cmp(a.1) } else { a.0.cmp(b.0) });
+        let mut char_by_occurrence: Vec<(char, u32)> = occurrence.into_iter().collect();
+        char_by_occurrence.sort_by(|a, b| if a.1 != b.1 { b.1.cmp(&a.1) } else { a.0.cmp(&b.0) });
 
         let calculated_checksum: String = char_by_occurrence.iter()
             .take(5)
-            .map(|&(&ch, _)| ch)
+            .map(|&(ch, _)| ch)
             .collect();
 
         self.checksum == calculated_checksum

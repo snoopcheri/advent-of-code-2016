@@ -16,16 +16,7 @@ impl PuzzleDay1 {
             match ch {
                 'L' => position.turn_left(),
                 'R' => position.turn_right(),
-                '0' => steps = steps * 10 + 0,
-                '1' => steps = steps * 10 + 1,
-                '2' => steps = steps * 10 + 2,
-                '3' => steps = steps * 10 + 3,
-                '4' => steps = steps * 10 + 4,
-                '5' => steps = steps * 10 + 5,
-                '6' => steps = steps * 10 + 6,
-                '7' => steps = steps * 10 + 7,
-                '8' => steps = steps * 10 + 8,
-                '9' => steps = steps * 10 + 9,
+                '0' ... '9' => steps = steps * 10 + (ch as u32) - ('0' as u32),
                 ',' => {
                     position.advance(steps);
                     steps = 0;
